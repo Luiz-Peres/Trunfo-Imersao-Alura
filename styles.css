@@ -1,8 +1,115 @@
+body{
+    background-image: url(BG.jpg);
+}
+
 #campo{
-    background-color: aqua;
     height: 250px;
 }
 #jogador{
-    background-color: red;
-    height: 250px;
+    position: fixed;
+    top: 50%;
+    left: 0%;
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.escolha{
+    object-fit: cover;
+    object-position: bottom;
+    width: 9.5%;
+    margin: 0% 0.25% 3.5% 0.25%;
+}
+
+.escolha:hover{
+    cursor: pointer;
+    width: 12%;
+}
+.scaled-down {
+    width: 9.2%
+  }
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 900; /* Valor alto para garantir que fique por cima */
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgPopUp{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    z-index: 901;
+}
+
+.controlador {
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+  }
+  
+.chose {
+    position: absolute;
+    width: 70%;
+    height: 4%;
+    text-align: center; 
+}
+
+#chose0{
+    top: 69.1%;
+    z-index: 902;
+}
+
+#chose1{
+    top:74.1%;
+    z-index: 902;
+}
+
+#chose2{
+    top:79.05%;
+    z-index: 902;
+}
+
+#chose3{
+    top:84%;
+    z-index: 902;
+}
+
+#chose4{
+    top:88.8%;
+    z-index: 902;
+}
+
+.chose:hover{
+    cursor: pointer
+}
+
+.x{
+    position: absolute;
+    top: 1%;
+    right: 85%;
+    width: 2%;
+}
+.x:hover{
+    cursor: pointer
+}
+
+.popup h1{
+    color: white;
+    margin-top:-55%;
 }

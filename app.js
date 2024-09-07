@@ -1,27 +1,10 @@
-console.log(warframes);
+//Testes
+
+function txt(value){
+    console.log(value)
+}
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    campo=document.getElementById("campo");
-    jogador=document.getElementById("jogador");
-
-    campo.innerHTML=`<h1>Nome: ${warframes[0].nome}</h1>
-    <p>Saude: ${warframes[0].saude}</p>
-    <p>Escudos: ${warframes[0].escudos}</p>
-    <p>Armadura: ${warframes[0].armadura}</p>
-    <p>Energia: ${warframes[0].energia}</p>
-    <p>Lançamento: ${warframes[0].lancamento}</p>
-    `;
-
-    jogador.innerHTML=`<h1>Nome: ${warframes[1].nome}</h1>
-    <p>Saude: ${warframes[1].saude}</p>
-    <p>Escudos: ${warframes[1].escudos}</p>
-    <p>Armadura: ${warframes[1].armadura}</p>
-    <p>Energia: ${warframes[1].energia}</p>
-    <p>Lançamento: ${warframes[1].lancamento}</p>
-    `;
-
-}); 
 
 //SITEMA DE DECK
 function gerarCartas(quantidade, maximo) {
@@ -46,18 +29,85 @@ const todasAsCartas = gerarCartas(20, 29);
 const cardCampo = todasAsCartas.slice(0, 10);
 const cardJogador = todasAsCartas.slice(10, 20); // Ajustado para pegar os próximos 10 elementos
 
-console.log(cardCampo);
-console.log(cardJogador);
+/*----------------------------------------------------------------*/
+//APRESENTAÇÃO DA CARTA
 
-//SISTEMA DE COMPARAÇÃO
-let resultado = false
-let warframeCampo = Object.values(warframes[cardCampo[Math.floor(Math.random()*(9-0+1)+0)]])
-let warframeJogador = Object.values(warframes[cardJogador[Math.floor(Math.random()*(9-0+1)+0)]])
-for(let dado in warframeCampo){
-    if(warframeCampo[dado] < warframeJogador[dado]){
-        resultado=true;
+document.addEventListener('DOMContentLoaded', () => {
+    campo=document.getElementById("campo");
+    jogador=document.getElementById("jogador");
+    for (let i = 0; i < 10; i++){
+        jogador.innerHTML+=`<img src="cartas/${cardJogador[i]}.jpg" alt="" id="carta${i}" onclick="selecCard(${i})" class="escolha">`
     }
-    console.log("Campo:"+warframeCampo[dado]+" Jogador:"+warframeJogador[dado])  
-    
+});
+/*----------------------------------------------------------------*/
+//SISTEMA DE TURNO
+let turno = 0
+
+for (let i = 0; i < 10; i++){
+    console.log(i)
+    if (turno == 0){
+        /*----------------------------------------------------------------*/
+
+        //CARTA SELECIONADA
+
+        function selecCard(num) {
+            const popup = document.createElement('div');
+            const controlador = document.createElement('div');
+            popup.classList.add('popup');
+            popup.id = "fechar";
+            controlador.classList.add("controlador");
+            popup.innerHTML = `<img src="cartas/${cardJogador[num]}.jpg" alt="" id="carta0" onclick="" class="imgPopUp">`
+            controlador.innerHTML += `<h1> Selecione um Atributo </h1>`
+            for (let i = 0; i <= 4; i++){
+                controlador.innerHTML += `<div class="chose" id="chose${i}" onclick="jogar(${num},${i+1})"></div`
+            }
+            controlador.innerHTML += `<img src="x.png" alt="" id"" onclick="fechar()" class="x">`
+            popup.appendChild(controlador)
+            
+            document.body.appendChild(popup);
+        }
+
+        function fechar(){
+            const popup = document.getElementById("fechar");
+            document.body.removeChild(popup);
+            
+        }
+        /*----------------------------------------------------------------*/
+
+        //SELECIONAR CARTA
+
+        let warframeCampo = Object.values(warframes[cardCampo[Math.floor(Math.random()*(9-0+1)+0)]])
+        function player(num,atr){
+            let warframeJogador = Object.values(warframes[cardJogador[num]])
+            const carta = document.getElementById('carta'+num);
+            fechar();
+            carta.remove();
+            console.log(warframeJogador)
+            console.log(warframeJogador[atr])
+            return(warframeJogador[atr])
+        }
+
+        function jogar(num,atr){
+            retorno=player(num,atr);
+            if (retorno > warframeCampo[atr]){
+                console.log("Você Ganhou!!")
+            }else{
+                console.log("Você Perdeu!!")
+            }
+            turno=1;
+        }
+        
+    }else{
+        turno=0
+    }
 }
-console.log(resultado)
+console.log(turno)
+
+
+
+
+
+
+
+
+
