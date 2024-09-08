@@ -61,7 +61,7 @@ function inimigoCarta(num,num2,num3,num4){
                 endWorld.removeChild(child);
                 child = endWorld.firstChild;
             }
-            endWorld.innerHTML=`<div id="win"><a href="index.html"><img src="index/MENU.png" alt="jogar" id="menu"></a></div>`;
+            endWorld.innerHTML=`<div id="lose"><a href="index.html"><img src="index/MENU.png" alt="jogar" id="menu"></a></div>`;
         }else if(num3==num4){
             let child = endWorld.firstChild;
             while (child) {
@@ -75,7 +75,7 @@ function inimigoCarta(num,num2,num3,num4){
                 endWorld.removeChild(child);
                 child = endWorld.firstChild;
             }
-            endWorld.innerHTML=`<div id="lose"><a href="index.html"><img src="index/MENU.png" alt="jogar" id="menu"></a></div>`;
+            endWorld.innerHTML=`<div id="win"><a href="index.html"><img src="index/MENU.png" alt="jogar" id="menu"></a></div>`;
         }
     }
     
