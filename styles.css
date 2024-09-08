@@ -158,4 +158,37 @@ body{
     margin-top:-55%;
 }
 
+#win{
+    background-image: url(index/VENCEDOR.jpg);
+}
 
+#draw{
+    background-image: url(index/EMPATE.jpg);
+}
+
+#lose{
+    background-image: url(index/PERDEDOR.jpg);
+}
+#win,#draw,#lose{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+#win img,#draw img,#lose img {
+    width: 20%;
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
+  
+#win,#draw,#lose img:hover {
+    transform: scale(1.10); /* Aumenta em 5% */
+    cursor: pointer;
+}
+
+#menu{
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    
+}
