@@ -1,10 +1,53 @@
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('bankgothic-regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
 body{
     background-image: url(BG.jpg);
+    font-family: 'MinhaFonte', sans-serif;
 }
 
 #campo{
-    height: 250px;
+    position: fixed;
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
 }
+
+.inimigo{
+    height: 100%;
+    border-radius: 15px;
+}
+
+#enemie{
+    margin-left: 2%;
+    color: black;
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-radius: 20px;
+    
+}
+
+#colorI{
+    color: rgb(199, 52, 96);
+}
+
+#contador{
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    font-size: 400%;
+
+}
+
 #jogador{
     position: fixed;
     top: 50%;
@@ -20,6 +63,7 @@ body{
     object-position: bottom;
     width: 9.5%;
     margin: 0% 0.25% 3.5% 0.25%;
+    border-radius: 10px;
 }
 
 .escolha:hover{
@@ -113,3 +157,5 @@ body{
     color: white;
     margin-top:-55%;
 }
+
+

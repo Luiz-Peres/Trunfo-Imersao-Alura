@@ -1,0 +1,51 @@
+body{
+    background-image: url(index/PAGINA_INICIAL.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 5%;
+}
+
+main{
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+}
+
+img {
+    width: 20%;
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
+  
+img:hover {
+    transform: scale(1.10); /* Aumenta em 5% */
+    cursor: pointer;
+}
+
+#jogar{
+    position: absolute;
+    right: 39%;
+    top: 65%;
+}
+#regras{
+    position: absolute;
+    right: 58%;
+    top: 65%;
+}
+#warframe{
+    position: absolute;
+    right: 20%;
+    top: 65%;
+    
+}
+
+
+@media screen and (max-width: 1490px) {
+    body{
+        background-size:200%;
+        background-position: 50% 7%;
+    }
+
+    #jogar,#regras,#warframe{
+        top:85%
+    }
+}

@@ -29,84 +29,101 @@ const todasAsCartas = gerarCartas(20, 29);
 const cardCampo = todasAsCartas.slice(0, 10);
 const cardJogador = todasAsCartas.slice(10, 20); // Ajustado para pegar os próximos 10 elementos
 
+
 /*----------------------------------------------------------------*/
+//SELEÇÃO INIMIGA
+
+/*----------------------------------------------------------------*/
+function randomico1(){
+    let randomico = Math.floor(Math.random()*(9-0+1)+0);
+    return randomico;
+}
+function randomico2(){
+    let selecRand = Math.floor(Math.random()*(5-1+1)+1);
+    return selecRand;
+}
+campRand = randomico1()
+selecRand=randomico2()
+function personagem(){
+    let warframeCampo = Object.values(warframes[cardCampo[campRand]])
+    return(warframeCampo)
+}
 //APRESENTAÇÃO DA CARTA
+function inimigoCarta(num,num2,num3,num4){
+    
+    function selecInimiga(){
+        if (num2 == 1){
+            return("saude")
+        }else if(num2 == 2){
+            return("escudos")
+        }else if(num2 == 3){
+            return("armadura")
+        }else if(num2 == 4){
+            return("energia")
+        }else{
+            return("lançamento")
+        }
+    }
+    campo=document.getElementById("campo");
+    campo.innerHTML=``;
+    campo.innerHTML=`<img src="cartas/${cardCampo[num]}.jpg" alt="" class="inimigo">`;
+    campo.innerHTML+=`<h2 id="enemie">O inimigo selecionou <br><spam id="colorI">${selecInimiga().toUpperCase()}!!</spam></h2>
+    <h1 id="contador">C${num3}:P${num4}</h1>
+    `;
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    campo=document.getElementById("campo");
+    
     jogador=document.getElementById("jogador");
     for (let i = 0; i < 10; i++){
         jogador.innerHTML+=`<img src="cartas/${cardJogador[i]}.jpg" alt="" id="carta${i}" onclick="selecCard(${i})" class="escolha">`
     }
+
+    
+
+    inimigoCarta(campRand,selecRand,0,0);
+    warframeCampo=personagem();
+    
+
+    
 });
+
 /*----------------------------------------------------------------*/
-//SISTEMA DE TURNO
-let turno = 0
 
-for (let i = 0; i < 10; i++){
-    console.log(i)
-    if (turno == 0){
-        /*----------------------------------------------------------------*/
+//SELECIONAR CARTA
 
-        //CARTA SELECIONADA
-
-        function selecCard(num) {
-            const popup = document.createElement('div');
-            const controlador = document.createElement('div');
-            popup.classList.add('popup');
-            popup.id = "fechar";
-            controlador.classList.add("controlador");
-            popup.innerHTML = `<img src="cartas/${cardJogador[num]}.jpg" alt="" id="carta0" onclick="" class="imgPopUp">`
-            controlador.innerHTML += `<h1> Selecione um Atributo </h1>`
-            for (let i = 0; i <= 4; i++){
-                controlador.innerHTML += `<div class="chose" id="chose${i}" onclick="jogar(${num},${i+1})"></div`
-            }
-            controlador.innerHTML += `<img src="x.png" alt="" id"" onclick="fechar()" class="x">`
-            popup.appendChild(controlador)
-            
-            document.body.appendChild(popup);
-        }
-
-        function fechar(){
-            const popup = document.getElementById("fechar");
-            document.body.removeChild(popup);
-            
-        }
-        /*----------------------------------------------------------------*/
-
-        //SELECIONAR CARTA
-
-        let warframeCampo = Object.values(warframes[cardCampo[Math.floor(Math.random()*(9-0+1)+0)]])
-        function player(num,atr){
-            let warframeJogador = Object.values(warframes[cardJogador[num]])
-            const carta = document.getElementById('carta'+num);
-            fechar();
-            carta.remove();
-            console.log(warframeJogador)
-            console.log(warframeJogador[atr])
-            return(warframeJogador[atr])
-        }
-
-        function jogar(num,atr){
-            retorno=player(num,atr);
-            if (retorno > warframeCampo[atr]){
-                console.log("Você Ganhou!!")
-            }else{
-                console.log("Você Perdeu!!")
-            }
-            turno=1;
-        }
-        
-    }else{
-        turno=0
+let scoreP = 0
+let scoreC = 0
+function selecCard(num){
+    console.log(selecRand)
+    let warframeJogador = Object.values(warframes[cardJogador[num]])
+    const carta = document.getElementById('carta'+num);
+    carta.remove();
+    console.log(warframeJogador[selecRand] );
+    console.log(warframeCampo[selecRand]);
+    if(warframeJogador[selecRand] > warframeCampo[selecRand]){
+        console.log("Win!!")
+        scoreP +=2
+    }else if(warframeJogador[selecRand] == warframeCampo[selecRand]){
+        console.log("Empate!!")
+        scoreC +=1
+        scoreP +=1
     }
+    else{
+        console.log("Derrota!!")
+        scoreC +=2
+    }
+    campRand = randomico1()
+    selecRand = randomico2()
+    warframeCampo=personagem();
+    inimigoCarta(campRand,selecRand,scoreC,scoreP);
+    
+    console.log(selecRand)
+
+
 }
-console.log(turno)
-
-
-
-
-
+/*----------------------------------------------------------------*/
 
 
 
