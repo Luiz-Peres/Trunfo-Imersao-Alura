@@ -29,3 +29,8 @@ Contribuições são bem-vindas! Se você encontrar algum bug ou tiver alguma su
 Agradecimentos
 
 Agradeço à Alura e ao Google Gemini pela oportunidade de participar desta imersão e desenvolver este projeto.
+
+Teste
+
+Você também pode testar agora esse projeto através do github pages!
+Basta acessar esse link: https://luiz-peres.github.io/Trunfo-Imersao-Alura/index.html
